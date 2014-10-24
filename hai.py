@@ -7,3 +7,10 @@
 # Assignment:Tic-Tac-Toe
 # Purpose:L33T comp
 ########################################
+
+# inherits from ai
+
+# placement() - hardAI placement - possibly want to initialize the first 
+#				couple of moves and then the rest of the moves will try 
+#				to block the user from winning (like looking for two 
+#				in a row and placing the symbol appropriately)

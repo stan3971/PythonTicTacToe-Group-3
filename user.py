@@ -8,3 +8,12 @@
 # Purpose:player of the game
 ########################################
 
+# inherits from player
+
+# printData () - print wins, losses, and draws
+
+# numWins
+
+# numLosses
+
+# numDraws

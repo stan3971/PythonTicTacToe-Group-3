@@ -7,3 +7,8 @@
 # Assignment:Tic-Tac-Toe
 # Purpose:NOOB comp
 ########################################
+
+# inherits from ai
+
+# placement() - easyAI placement - possibly want to set the moves 
+#				randomly

@@ -12,7 +12,7 @@
 class Board :
 	"""A single game board"""
 	
-	def __init__(self)
+	def __init__(self) :
 		self._gameBoard = [[0 for x in xrange(3)] for x in xrange(3)]
-		print(self._gameBoard)
+
 		  

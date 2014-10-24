@@ -8,3 +8,6 @@
 # Purpose:A new challenger approuches
 ########################################
 
+# inherits from player 
+
+# placement () - abstract placement function

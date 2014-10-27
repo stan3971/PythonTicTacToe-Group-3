@@ -42,9 +42,9 @@ class HAI (player) :
 		elif 0 != TwoInRowPoint and !board.spotTaken (TwoInRowPoint) : 
 			return TwoInRowPoint
 		else
-			point = Point (randrange(3), randrange(3)
+			point = Point (randrange(3), randrange(3))
 			while board.spotTaken (point) :
-				point = Point (randrange(3), randrange(3)
+				point = Point (randrange(3), randrange(3))
 			return point"""
 			
 			

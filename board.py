@@ -24,6 +24,7 @@ class Board :
 		for x in range(0,3) :
 			for y in range (0,3) :
 				self._gameBoard[y][x] = '*'
+		self._numMoves = 0
 	
 	def printBoard(self) :
 		print("  1 2 3 x")
@@ -37,35 +38,40 @@ class Board :
 	def insertMove(self, move, symbal) :
 		if (self.spotTaken(move) == False) :
 			self._gameBoard[move.y - 1][move.x - 1] = symbal
+			
+			self._numMoves = self._numMoves + 1
+			
 		else :
 			print("That space is taken")
 		
 	def reset (self) :
-		self.__init__
+		self.__init__()
 		
 	def checkForWin (self, player) :
 		winner = False
-		for x in range(0,3) :
-			count1 = 0
-			count2 = 0
-			count3 = 0
-			count4 = 0
-			for y in range(0,3) :
-				if (self._gameBoard[x][y] == player) :
-					count1 += 1
-				if (self._gameBoard[y][x] == player) :
-					count2 += 1
-				if (self._gameBoard[2-x][x] == player) :
-					count3 += 1
-				if (self._gameBoard[y][y] == player) :
-					count4 += 1
-			if (count1 == 3 or count2 == 3 or count3 ==3 or count4 ==3):
-				winner = True
+		
+		if self._numMoves > 4 :
+			for x in range(0,3) :
+				count1 = 0
+				count2 = 0
+				count3 = 0
+				count4 = 0
+				for y in range(0,3) :
+					if (self._gameBoard[x][y] == player) :
+						count1 += 1
+					if (self._gameBoard[y][x] == player) :
+						count2 += 1
+					if (self._gameBoard[2-x][x] == player) :
+						count3 += 1
+					if (self._gameBoard[y][y] == player) :
+						count4 += 1
+				if (count1 == 3 or count2 == 3 or count3 == 3 or count4 == 3):
+					winner = True
 		return winner
 		
 	def spotTaken (self, move) :
 		taken = False
-		if ('*' != self._gameBoard[move.y -1][move.x -1]) :
+		if ('*' is not self._gameBoard[move.y -1][move.x -1]) :
 			taken = True
 		return taken
 		
@@ -73,10 +79,16 @@ class Board :
 		pass
 		
 	def isEmpty (self) :
-		pass
+		if (self._numMoves == 0) :
+			return True
+		else :
+			return False
 		
 	def isFull (self) : 
-		pass
+		if (self._numMoves == 9) :
+			return True
+		else :
+			return False
 		
 #Testing crap
 #Tic = Board()

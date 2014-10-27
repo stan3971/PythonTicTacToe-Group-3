@@ -35,21 +35,35 @@ class user (player):
 		print ("Wins:", self._wins, "Losses:", self._losses, "Draws:", self._draws)
 		
 	def placement (self, board) :
+		print("")
 		print ("X?")
-		x = input(">>> ")
-		while x not in range(3) : 
-			x = input(">>> ")
+		x = int(input(">>> "))
+		while x < 0 and x > 4 : 
+			x = int(input(">>> "))
 		
 		print("Y?")
-		y = input(">>>")
-		while y not in range(3) :
-			y = input(">>> ")
+		y = int(input(">>> "))
+		while y < 0 and y > 4 :
+			y = int(input(">>> "))
+		
+		point = Point(x,y)
+		spotTaken = board.spotTaken(point)
 		
 		return Point(x,y)
 		#ask for x and y
-		#check these are valid (space can be taken and between 1 and 3)
+		
+		#check if the spot is taken!!! these are valid (space can be taken and between 1 and 3)
+		
 		#put coordinates in a point class/object
 		#return the point
+	def incrementWins(self) :
+		self._wins = self._wins + 1
+
+	def incrementLosses(self) :
+		self._losses = self._losses + 1
+		
+	def incrementDraws(self) :
+		self._draws = self._draws + 1
 		
 
 # printData () - print wins, losses, and draws

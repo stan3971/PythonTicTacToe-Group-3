@@ -72,16 +72,22 @@ class Board :
 	def checkForTwo (self) :
 		pass
 		
+	def isEmpty (self) :
+		pass
+		
+	def isFull (self) : 
+		pass
+		
 #Testing crap
-Tic = Board()
-move = Point(1,1)
-Tic.insertMove(move,'X')
-print(Tic.spotTaken(move))
-Tic.insertMove(move,'X')
-Tic.printBoard()
-Tic.printBoard()
-print(Tic.checkForWin('X'))
-Tic.__init__ ()
-Tic.printBoard ()
-print(Tic.checkForWin('X'))
-print(Tic.spotTaken(move))
+#Tic = Board()
+#move = Point(1,1)
+#Tic.insertMove(move,'X')
+#print(Tic.spotTaken(move))
+#Tic.insertMove(move,'X')
+#Tic.printBoard()
+#Tic.printBoard()
+#print(Tic.checkForWin('X'))
+#Tic.__init__ ()
+#Tic.printBoard ()
+#print(Tic.checkForWin('X'))
+#print(Tic.spotTaken(move))

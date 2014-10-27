@@ -24,6 +24,7 @@ class Board :
 		for x in range(0,3) :
 			for y in range (0,3) :
 				self._gameBoard[y][x] = '*'
+		self._turns = 0
 	
 	def printBoard(self) :
 		print("  1 2 3 x")
@@ -37,6 +38,7 @@ class Board :
 	def insertMove(self, move, symbal) :
 		if (self.spotTaken(move) == False) :
 			self._gameBoard[move.y - 1][move.x - 1] = symbal
+			self._turns += 1
 		else :
 			print("That space is taken")
 		
@@ -71,6 +73,18 @@ class Board :
 		
 	def checkForTwo (self) :
 		pass
+		
+	def checkForEmpty (self) :
+		empty = True
+		if (self._turns != 0) :
+			empty = False
+		return empty
+		
+	def checkForFull (self) :
+		full = False
+		if (self._turns == 9) :
+			full = True
+		return full
 		
 #Testing crap
 Tic = Board()

@@ -11,8 +11,6 @@
 The Player Module
 """
 
-from abc import ABCMeta
-
 class player :
 	"""Superclass for user and AI includes a name and symbol"""
 	

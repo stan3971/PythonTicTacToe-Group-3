@@ -24,11 +24,8 @@ from board import *
 from player import *
 
 class HAI (player) :
-		"""Superclass for user and AI includes a name and symbol"""
-	
+
 	def __init__ (self, name, symbol) :
-		""" Initializes an object of player setting the passed in name
-			and name to the player name and player symbol"""
 		self._name = name
 		self._symbol = symbol
 		
@@ -37,7 +34,7 @@ class HAI (player) :
 		""" prints the AI information"""
 		print ("AI name:", self._name, "Symbol:", self._symbol)
 		
-	def	placement (self, board) :
+	"""def	placement (self, board) :
 		TwoInRowPoint = board.checkForTwo () # check this name and function
 		
 		if board.IsEmpty () : #check this name and function
@@ -48,7 +45,7 @@ class HAI (player) :
 			point = Point (randrange(3), randrange(3)
 			while board.spotTaken (point) :
 				point = Point (randrange(3), randrange(3)
-			return point
+			return point"""
 			
 			
 

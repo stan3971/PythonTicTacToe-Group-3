@@ -8,4 +8,7 @@
 # Purpose:to run the game
 ########################################
 
+from game import *
+
+
 

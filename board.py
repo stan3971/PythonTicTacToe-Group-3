@@ -89,6 +89,55 @@ class Board :
 			return True
 		else :
 			return False
+			
+	def checkPoint (self, x, y, symbol) : 
+		if self._gameBoard[y][x] == symbol :
+			return True
+		else :
+			return False
+			
+	def checkWinHorizontal (self, symbol) :
+		for y in range (0,3) :
+			count = 0
+			for x in range (0,3) :
+				if self.checkPoint(x,y,symbol) : 
+					count = count + 1
+			if count == 3 :
+				return True
+		return False
+
+	def checkWinVertical (self, symbol) :
+		for x in range (0,3) :
+			count = 0
+			for y in range (0,3) :
+				if self.checkPoint(x,y,symbol) : 
+					count = count + 1
+			if count == 3 :
+				return True
+		return False	
+	
+	def checkWinDiagonal(self, symbol) : 
+		count1 = 0
+		count2 = 0
+		for value in range(0,3) :
+			if self.checkPoint(value, value, symbol) :
+				count1 += 1
+			if self.checkPoint(value, (2 - value), symbol) :
+				count2 += 1
+		if count1 == 3 or count2 == 3 :
+			return True
+		else :
+			return False
+			
+	def checkWin(self, symbol) :
+		if (self.checkWinDiagonal(symbol) or \
+		self.checkWinHorizontal(symbol) or \
+		self.checkWinVertical(symbol)):
+			return True
+		else :
+			return False
+		
+		
 		
 #Testing crap
 #Tic = Board()
@@ -103,3 +152,26 @@ class Board :
 #Tic.printBoard ()
 #print(Tic.checkForWin('X'))
 #print(Tic.spotTaken(move))
+
+
+"""
+
+Tic = Board()
+move1 = Point(1,1)
+move2 = Point(1,2)
+move3 = Point(1,3)
+
+
+Tic.insertMove(move1, 'X')
+Tic.insertMove(move2, 'X')
+Tic.insertMove(move3, 'X')
+Tic.printBoard()
+#print(Tic.checkWinHorizontal ('X'))
+#print(Tic.checkWinVertical ('X'))
+#print(Tic.checkWinDiagonal ('X'))
+print(Tic.checkWin('X'))
+
+"""
+
+
+

@@ -35,19 +35,22 @@ class user (player):
 		print ("Wins:", self._wins, "Losses:", self._losses, "Draws:", self._draws)
 		
 	def placement (self, board) :
-		print("")
-		print ("X?")
-		x = int(input(">>> "))
-		while x < 0 and x > 4 : 
+		spotTaken = True
+		
+		while spotTaken : 
+			print("")
+			print ("X?")
 			x = int(input(">>> "))
-		
-		print("Y?")
-		y = int(input(">>> "))
-		while y < 0 and y > 4 :
+			while x < 0 and x > 4 : 
+				x = int(input(">>> "))
+			
+			print("Y?")
 			y = int(input(">>> "))
-		
-		point = Point(x,y)
-		spotTaken = board.spotTaken(point)
+			while y < 0 and y > 4 :
+				y = int(input(">>> "))
+			
+			point = Point(x,y)
+			spotTaken = board.spotTaken(point)
 		
 		return Point(x,y)
 		#ask for x and y

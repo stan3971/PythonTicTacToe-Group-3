@@ -81,6 +81,7 @@ class game :
 		if (self._userTurn ==  True) :
 			point = self._user.placement(self._board)
 		else :
+			print ("")
 			print ("Opponent's turn...")
 			print ("")
 			point = self._ai.placement(self._board)
@@ -90,7 +91,7 @@ class game :
 		
 		self._board.insertMove(point, symbol)
 		
-		win = self._board.checkForWin(symbol)
+		win = self._board.checkWin(symbol)
 		draw = self._board.isFull()
 		
 		if win :
@@ -127,6 +128,9 @@ class game :
 		self._gameRunning = True
 		print("")	
 		print("Tic-Tac-Toe Game", self._gameNum)
+		print("")
+		self.draw()
+		
 		
 	def draw(self) :
 		self._board.printBoard()
@@ -134,7 +138,11 @@ class game :
 	def getStatus(self) :
 		if self._board.isFull() :
 			self._gameRunning = False
-		
+	
+	
+	
+	
+
 		
 		
 """

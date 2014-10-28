@@ -33,7 +33,8 @@ class AI (Player):
 		
 	def printPlayer (self) :
 		""" prints the player information"""
-		print ("Player:", self._name, "Symbol:", self._symbol)
+		print ("Player:", self._name)
+		print ("Symbol:", self._symbol)
 		
 	def	placement (self) :
 		""" placeholder for deciding where to place a symbol in a 

@@ -24,7 +24,8 @@ class EAI (player):
 		
 	def printAI (self) :
 		""" prints the AI information"""
-		print ("AI name:", self._name, "Symbol:", self._symbol)
+		print ("Easy AI name:", self._name)
+		print ("Symbol:", self._symbol)
 		
 	def	placement (self, board) :
 		point = Point (randrange(3) + 1, randrange(3) + 1)

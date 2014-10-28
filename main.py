@@ -50,9 +50,9 @@ def main() :
 		while Game.gameRunning() :
 			Game.getMove()
 			Game.draw()
-			print(Game.gameRunning())
-			
-		Game.resetGame()
+		
+		print()
+		Game.printUserData()
 		
 		print("Continue playing (Yes or No)? : Y or N")
 		choice = input (">>> ")
@@ -62,14 +62,9 @@ def main() :
 			
 		if choice == "Y" :
 			gameQuit = False
+			Game.resetGame()
 		else :
 			gameQuit = True
-
-
-
-
-
-
 
 
 

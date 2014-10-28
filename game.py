@@ -20,9 +20,10 @@ class game :
 	def __init__ (self) :
 		self._board = Board()
 		self._userFirst = True
-		self._gameNum = 0
+		self._gameNum = 1
 		self._gameRunning = True
 		self._userTurn = True
+		print("Tic-Tac-Toe Game 1")
 		
 	def nameUser (self) :
 		print ("Enter name:")
@@ -68,7 +69,6 @@ class game :
 	def printOpponentData (self) : 
 		self._ai.printAI()
 		
-		
 	def getTurn(self) : 
 		if (self._userTurn ==  True) :
 			return self._user.getSymbol()
@@ -79,33 +79,91 @@ class game :
 		symbol = self.getTurn()
 		
 		if (self._userTurn ==  True) :
-			self._user.placement(self._board)
-			
+			point = self._user.placement(self._board)
+		else :
+			print ("")
+			print ("Opponent's turn...")
+			print ("")
+			point = self._ai.placement(self._board)
+		
+		print ("Entered point is: (",point.x,",", point.y,")")
+		print ("")
+		
+		self._board.insertMove(point, symbol)
+		
+		win = self._board.checkWin(symbol)
+		draw = self._board.isFull()
+		
+		if win :
+			self._gameRunning = False
+			if symbol == self._user.getSymbol() :
+				self._user.incrementWins()
+			elif symbol == self._ai.getSymbol():
+				self._user.incrementLosses()
+		elif draw :
+			self._user.incrementDraws()
+			self._gameRunning = False
+		else :
+			self.updateTurn()
 	
-	#def userWin (self) : 
+	def gameRunning (self) : 
+		return self._gameRunning
 	
-	def updateTurn (self, symbol) :
+	def updateTurn (self) :
+		if self._userTurn == True :
+			self._userTurn = False
+		else :
+			self._userTurn = True
+		
+	def resetGame (self) : 
+		self._board.reset()
+		self._gameNum = self._gameNum + 1
+		if self._userFirst :
+			self._userFirst = False
+			self._userTurn = False
+		else :
+			self._userFirst = True
+			self._userTurn = True
+		
+		self._gameRunning = True
+		print("")	
+		print("Tic-Tac-Toe Game", self._gameNum)
+		print("")
+		self.draw()
 		
 		
+	def draw(self) :
+		self._board.printBoard()
 		
-		
-		
-		
-		
+	def getStatus(self) :
 		if self._board.isFull() :
 			self._gameRunning = False
+	
+	
+	
+	
+
 		
 		
-	#def resetGame (self) : 
-		
-		
-		
+"""
+
 testGame = game()
 testGame.nameUser()
+print("")
 testGame.printUserData()
+print("")
 testGame.nameOpponent()
+print("")
 testGame.printOpponentData()
+print("")
+testGame.draw()
+testGame.getMove()
+testGame.draw()
+testGame.resetGame()
+testGame.draw()
 
+
+"""
 # gameCreate() - initializes the game (user wins, losses, draws = 0, board is empty)...
 
 # userFirst = true/false (something like that)

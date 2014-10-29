@@ -14,7 +14,7 @@ import unittest
 from hai import *
 from board import *
 
-class TestPlayerFunctions (unittest.TestCase):
+class TestHAIFunctions (unittest.TestCase):
 
 	
 	def setUp (self) :
@@ -27,14 +27,14 @@ class TestPlayerFunctions (unittest.TestCase):
 		pass
 		
 	def test_EmptyBoard (self) :
-		""""""
+		"""tests how the AI chooses a symbol in an empty board"""
 		board = Board ()
 		returnPoint = self.hard.placement (board)
 		self.assertEqual (returnPoint.x, 2)
 		self.assertEqual (returnPoint.y, 2) 
 			
 	def test_RandomPlacement (self) :
-		""""""
+		"""tests how the AI chooses a symbol when it should be random"""
 		board = Board ()
 		board.insertMove (Point (1,1), 'X')
 		returnPoint = self.hard.placement (board)
@@ -42,7 +42,9 @@ class TestPlayerFunctions (unittest.TestCase):
 		self.assertNotEqual (returnPoint.y, -1)
 		
 	def test_OwnTwoInRowPlacementHorizontal(self) :
-		""""""
+		"""tests how the AI chooses a symbol when it has two in a row
+			horizontally
+		"""
 		board = Board ()
 		board.insertMove (Point (1,1), 'X')
 		board.insertMove (Point (1,2), 'X')
@@ -51,7 +53,9 @@ class TestPlayerFunctions (unittest.TestCase):
 		self.assertEqual (returnPoint.y, 3)
 		
 	def test_OwnTwoInRowPlacementVertical(self) :
-		""""""
+		"""tests how the AI chooses a symbol when it has two in a row
+			vertically
+		"""
 		board = Board ()
 		board.insertMove (Point (1,1), 'X')
 		board.insertMove (Point (2,1), 'X')
@@ -60,7 +64,9 @@ class TestPlayerFunctions (unittest.TestCase):
 		self.assertEqual (returnPoint.y, 1)
 			
 	def test_OwnTwoInRowPlacementDiaLR(self) :
-		""""""
+		"""tests how the AI chooses a symbol when it has two in a row
+			diagonally with the diagonal from left to right
+		"""
 		board = Board ()
 		board.insertMove (Point (1,1), 'X')
 		board.insertMove (Point (2,2), 'X')
@@ -69,7 +75,9 @@ class TestPlayerFunctions (unittest.TestCase):
 		self.assertEqual (returnPoint.y, 3)
 		
 	def test_OwnTwoInRowPlacementDiaRL(self) :
-		""""""
+		"""tests how the AI chooses a symbol when it has two in a row
+			diagonally with the diagonal from right to left
+		"""
 		board = Board ()
 		board.insertMove (Point (1,3), 'X')
 		board.insertMove (Point (2,2), 'X')

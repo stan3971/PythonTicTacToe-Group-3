@@ -36,39 +36,20 @@ class Board :
 		print("y")
 		
 	def insertMove(self, move, symbal) :
-		if (self.spotTaken(move) == False) :
-			self._gameBoard[move.y - 1][move.x - 1] = symbal
+		if(self.checkForRange(move) == True) :
+			if (self.spotTaken(move) == False) :
+				self._gameBoard[move.y - 1][move.x - 1] = symbal
+				self._numMoves = self._numMoves + 1
 			
-			self._numMoves = self._numMoves + 1
-			
+				return True
+			else :
+				return False
 		else :
-			print("That space is taken")
+			return False
 		
 	def reset (self) :
 		self.__init__()
-		
-	def checkForWin (self, player) :
-		winner = False
-		
-		if self._numMoves > 4 :
-			for x in range(0,3) :
-				count1 = 0
-				count2 = 0
-				count3 = 0
-				count4 = 0
-				for y in range(0,3) :
-					if (self._gameBoard[x][y] == player) :
-						count1 += 1
-					if (self._gameBoard[y][x] == player) :
-						count2 += 1
-					if (self._gameBoard[2-x][x] == player) :
-						count3 += 1
-					if (self._gameBoard[y][y] == player) :
-						count4 += 1
-				if (count1 == 3 or count2 == 3 or count3 == 3 or count4 == 3):
-					winner = True
-		return winner
-		
+				
 	def spotTaken (self, move) :
 		taken = False
 		if ('*' is not self._gameBoard[move.y -1][move.x -1]) :
@@ -133,6 +114,12 @@ class Board :
 		if (self.checkWinDiagonal(symbol) or \
 		self.checkWinHorizontal(symbol) or \
 		self.checkWinVertical(symbol)):
+			return True
+		else :
+			return False
+			
+	def checkForRange (self, move) :
+		if (move.y > 0 and move.y < 4 and move.x > 0 and move.x < 4) :
 			return True
 		else :
 			return False
@@ -209,8 +196,9 @@ class Board :
 		return point		
 			
 #Testing crap
-#Tic = Board()
-#move = Point(1,1)
+Tic = Board()
+move = Point(4,4)
+print(Tic.checkForRange(move))
 #Tic.insertMove(move,'X')
 #print(Tic.spotTaken(move))
 #Tic.insertMove(move,'X')

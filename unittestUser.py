@@ -36,14 +36,6 @@ class TestUserFunctions (unittest.TestCase) :
 	def test_getDraws (self) :
 		"""checks that getWDraws returns the correct number of draws"""
 		self.assertEqual (self.user.getDraws(), 1)
-	
-	"""	
-	def test_printData (self) :
-		self.assertEqual (self.user.printData(), "Player: Bob \nSymbol: X \nWins: 0 Losses: 0 Draws: 0 ")
-
-	def test_placement (self, self.board) :
-	
-		self.assertEqual (self.user.placement(self.board), """
 		
 	def test_incrementWins (self) :
 		"""checks that incrementWins increases the number of wins by 1"""

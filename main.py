@@ -9,31 +9,19 @@
 ########################################
 
 from game import *
-
-
+"""
+The Main Module
+"""
 
 def main() :
+	""""initiliaze a new game and set the name of user and opponent
+		then draw the board and enter the loop for the game. For each 
+		game get a move then draw and continue until a win or draw. 
+		After a game is over print the user data and ask the user if 
+		they want to continue or stop playing
+		"""
 	gameQuit = False
-	
-	"""
-	testGame = game()
-	testGame.nameUser()
-	print("")
-	testGame.printUserData()
-	print("")
-	testGame.nameOpponent()
-	print("")
-	testGame.printOpponentData()
-	print("")
-	testGame.draw()
-	testGame.getMove()
-	testGame.draw()
-	testGame.resetGame()
-	testGame.draw()
-	"""
-	
-	
-	
+
 	Game = game()
 	Game.nameUser()
 	print("")
@@ -66,35 +54,6 @@ def main() :
 		else :
 			gameQuit = True
 
-
-
-
 if __name__=="__main__" :
 	main()
 
-
-
-"""
-main()
-
-
-	initialize the game
-	get user
-	get opponent
-	
-	quit = False
-	
-	while (!quit)
-	
-		while (game running)
-			draw()
-			game.getMove()
-			game.getMove()
-			
-			
-			
-
-
-
-
-"""

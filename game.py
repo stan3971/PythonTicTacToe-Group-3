@@ -8,6 +8,9 @@
 # Purpose:to run the game
 ########################################
 
+"""
+The Game Module
+"""
 
 from user import *
 from hai import *
@@ -15,9 +18,13 @@ from eai import *
 from board import *
 
 class game :
-	""" the game """
+	""" the game class handles all functionality of the game"""
 	
 	def __init__ (self) :
+		""" Initializes an object of game creating a new board, setting
+		the user to go first, the number of games to 1, game running to
+		true, and the user turn to true		
+		"""
 		self._board = Board()
 		self._userFirst = True
 		self._gameNum = 1
@@ -26,6 +33,9 @@ class game :
 		print("Tic-Tac-Toe Game 1")
 		
 	def nameUser (self) :
+		"""
+		asks the user for there name and a valid symbol
+		"""
 		print ("Enter name:")
 		name = input(">>> ")
 		print ("X or O?")
@@ -37,15 +47,18 @@ class game :
 		self._user = user (name, symbol, 0, 0, 0)
 		
 	def userSymbolIsX (self) : 
+		"""returns true if the user symbol is X	"""
 		userIsX = False
 		if (self._user.getSymbol() == "X" ) :
 			userIsX = True
 		return userIsX
 	
 	def printUserData (self) : 
+		"""calls the user print Data function"""
 		self._user.printData()
 	
 	def nameOpponent (self) :
+		"""asks the user to name the AI oppenent and the difficulty"""
 		print ("Enter opponent difficulty (Easy or Hard): E or H?")
 		difficulty = input (">>> ")
 		while ( (difficulty != "E") and (difficulty != "H") ) : 
@@ -67,15 +80,21 @@ class game :
 			self._ai = HAI (aiName, aiSymbol)
 			
 	def printOpponentData (self) : 
+		"""calls the AI print function """
 		self._ai.printAI()
 		
 	def getTurn(self) : 
+		""" returns the symbol of whose turn it is """
 		if (self._userTurn ==  True) :
 			return self._user.getSymbol()
 		else :
 			return self._ai.getSymbol()
 			
 	def getMove(self) : 
+		""""calls the placement function for whose turn it is 
+			then checks if anyone has won or if the board is full
+			and the game is a tie. Then if either win or draw increment
+			the correct info in the user. Then update the turn."""
 		symbol = self.getTurn()
 		
 		if (self._userTurn ==  True) :
@@ -107,15 +126,20 @@ class game :
 			self.updateTurn()
 	
 	def gameRunning (self) : 
+		"""returns whether the game is running or not"""
 		return self._gameRunning
 	
 	def updateTurn (self) :
+		""" switches the turn between the ai and user"""
 		if self._userTurn == True :
 			self._userTurn = False
 		else :
 			self._userTurn = True
 		
 	def resetGame (self) : 
+		""" resets the board, whether the user is first or not, and
+			restart the game. Then print the  next game number and 
+			new board"""
 		self._board.reset()
 		self._gameNum = self._gameNum + 1
 		if self._userFirst :
@@ -133,55 +157,6 @@ class game :
 		
 		
 	def draw(self) :
+		""" prints the board"""
 		self._board.printBoard()
-		
-	def getStatus(self) :
-		if self._board.isFull() :
-			self._gameRunning = False
-	
-	
-	
-	
 
-		
-		
-"""
-
-testGame = game()
-testGame.nameUser()
-print("")
-testGame.printUserData()
-print("")
-testGame.nameOpponent()
-print("")
-testGame.printOpponentData()
-print("")
-testGame.draw()
-testGame.getMove()
-testGame.draw()
-testGame.resetGame()
-testGame.draw()
-
-
-"""
-# gameCreate() - initializes the game (user wins, losses, draws = 0, board is empty)...
-
-# userFirst = true/false (something like that)
-
-# gameNum = 0 (start at 0)
-
-# nameUser() - function to prompt the user to enter the name and store this info in user class?
-
-# nameOpponent() - just like nameUser
-
-# userSymbolX = true/false - sets user.symbol and ai.symbol
-
-# aiEasy = true/false - makes ai to hard or easy...
-
-# userWin = true/false type of thing
-
-# gameUpdate() - updates aspects of the game (wins, losses, board)...
-
-# resetGame() - if the user wants to play again, resets the board
-
-# usermove (x,y) - take coordinates of the user moves -> this gives info to board as well

@@ -8,15 +8,13 @@
 # Purpose:NOOB comp
 ########################################
 
+"""
+The EAI Module
+"""
 
 from player import *
 from random import randrange
 from board import *
-
-# inherits from ai
-
-# placement() - easyAI placement - possibly want to set the moves 
-#				randomly
 
 class EAI (player):
 	def __init__(self, name, symbol) :
@@ -28,6 +26,9 @@ class EAI (player):
 		print ("Symbol:", self._symbol)
 		
 	def	placement (self, board) :
+		"""This function decides how the AI will choose which point
+		to place its symbol. The AI places its symbol randomly.
+		"""
 		point = Point (randrange(3) + 1, randrange(3) + 1)
 		taken = board.spotTaken (point)
 		while taken :

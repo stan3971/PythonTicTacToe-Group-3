@@ -8,15 +8,8 @@
 # Purpose:L33T comp
 ########################################
 
-# inherits from ai
-
-# placement() - hardAI placement - possibly want to initialize the first 
-#				couple of moves and then the rest of the moves will try 
-#				to block the user from winning (like looking for two 
-#				in a row and placing the symbol appropriately)
-
 """
-The Player Module
+The HAI Module
 """
 
 from random import randrange
@@ -32,21 +25,38 @@ class HAI (player) :
 		
 	def printAI (self) :
 		""" prints the AI information"""
-		print ("AI name:", self._name, "Symbol:", self._symbol)
+		print ("Hard AI name:", self._name)
+		print ("Symbol:", self._symbol)
 		
-	"""def	placement (self, board) :
-		TwoInRowPoint = board.checkForTwo () # check this name and function
+	def placement (self, board) :
+		"""This function decides how the AI will choose which point
+		to place its symbol. If the board is empty it will place it
+		in the middle. If the board is not empty it will check for 
+		two in a row of its own symbol and place it there otherwise 
+		block the enemy's two in a row. Finally it will place a random.
+		"""
+		badPoint = Point (-1, -1)
+		OwnTwoInRow	= board.checkTwoInRow (self._symbol)
+		if board.isEmpty () :
+			return Point (2, 2)
+		else : 			
+			if 'X' == self._symbol :
+				EnemyTwoInRow = board.checkTwoInRow ('O')
+			else :
+				EnemyTwoInRow = board.checkTwoInRow ('X')	
 		
-		if board.IsEmpty () : #check this name and function
-			return Point (1, 1)
-		elif 0 != TwoInRowPoint and !board.spotTaken (TwoInRowPoint) : 
-			return TwoInRowPoint
-		else
-			point = Point (randrange(3), randrange(3))
-			while board.spotTaken (point) :
-				point = Point (randrange(3), randrange(3))
-			return point"""
-			
-			
+			if badPoint.x != OwnTwoInRow.x and \
+				badPoint.y != OwnTwoInRow.y :
+				return OwnTwoInRow
+			elif badPoint.x != EnemyTwoInRow.x and \
+				 badPoint.y != EnemyTwoInRow.y :
+				return EnemyTwoInRow
+			else :
+				point = Point (randrange(3) + 1, randrange(3) + 1)
+				taken = board.spotTaken (point)
+				while taken :
+					point = Point (randrange(3) + 1, randrange(3) + 1)
+					taken = board.spotTaken (point)
+				return point		
 
 			

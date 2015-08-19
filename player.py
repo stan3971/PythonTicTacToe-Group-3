@@ -1,21 +1,18 @@
 #!/usr/bin/python3
 ##########################################
-# File Name:ai.py
+# File Name:player.py
 # Author:Group 3
 # Date:10/24/14
 # Class:360
 # Assignment:Tic-Tac-Toe
-# Purpose:A new challenger approuches
+# Purpose:Player Superclass. holds user/ai
 ########################################
-
-from player import *
-
 """
-The AI Module
+The Player Module
 """
 
-class AI (Player):
-	"""Superclass for Hard AI and Easy AI includes a name and symbol"""
+class player :
+	"""Superclass for user and AI includes a name and symbol"""
 	
 	def __init__ (self, name, symbol) :
 		""" Initializes an object of player setting the passed in name
